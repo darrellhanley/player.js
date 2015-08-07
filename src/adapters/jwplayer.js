@@ -27,6 +27,14 @@ playerjs.JWPlayerAdapter.prototype.init = function(player){
     receiver.emit('play');
   });
 
+  player.onAdPlay(function(){
+    reciever.emit('play');
+  });
+
+  player.onAdPause(function(){
+    reciever.emit('pause');
+  });
+
   player.onTime(function(e){
     var seconds = e.position,
       duration = e.duration;
