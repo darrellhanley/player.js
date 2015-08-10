@@ -1,4 +1,4 @@
-/*! Player.js - v0.0.11 - 2015-08-07
+/*! Player.js - v0.0.11 - 2015-08-10
 * http://github.com/embedly/player.js
 * Copyright (c) 2015 Embedly; Licensed BSD */
 var playerjs = {};
@@ -878,14 +878,6 @@ playerjs.JWPlayerAdapter.prototype.init = function(player){
     receiver.emit('play');
   });
 
-  player.onAdPlay(function(){
-    reciever.emit('play');
-  });
-
-  player.onAdPause(function(){
-    reciever.emit('pause');
-  });
-
   player.onTime(function(e){
     var seconds = e.position,
       duration = e.duration;
@@ -899,6 +891,14 @@ playerjs.JWPlayerAdapter.prototype.init = function(player){
       duration: duration
     };
     receiver.emit('timeupdate', value);
+  });
+
+  player.onAdPlay(function(){
+    reciever.emit('play');
+  });
+
+  player.onAdPause(function(){
+    reciever.emit('pause');
   });
 
   var self = this;
