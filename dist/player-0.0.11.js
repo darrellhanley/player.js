@@ -894,6 +894,25 @@ playerjs.JWPlayerAdapter.prototype.init = function(player){
     receiver.emit('timeupdate', value);
   });
 
+  player.onAdTime(function(e){
+    var seconds = e.position,
+      duration = e.duration;
+
+    if (!seconds || !duration){
+      return false;
+    }
+
+    var value = {
+      seconds: seconds,
+      duration: duration
+    };
+    receiver.emit('timeupdate',value);
+  });
+
+  player.onAdImpression(function(){
+    receiver.emit('play');
+  });
+
   player.onAdPlay(function(){
     receiver.emit('play');
   });
