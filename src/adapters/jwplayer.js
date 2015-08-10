@@ -43,11 +43,11 @@ playerjs.JWPlayerAdapter.prototype.init = function(player){
   });
 
   player.onAdPlay(function(){
-    reciever.emit('play');
+    receiver.emit('play');
   });
 
   player.onAdPause(function(){
-    reciever.emit('pause');
+    receiver.emit('pause');
   });
 
   var self = this;
